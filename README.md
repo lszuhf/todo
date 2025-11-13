@@ -42,6 +42,7 @@ A modern monorepo setup for building full-stack applications with Cloudflare Pag
 
 - **Runtime**: Cloudflare Workers
 - **Framework**: Hono
+- **Database**: Cloudflare D1 (SQLite)
 - **Language**: TypeScript
 - **Validation**: Zod
 - **Development**: Wrangler
@@ -127,6 +128,14 @@ pnpm --filter worker build
 
 # Run type checking
 pnpm --filter worker typecheck
+
+# Database migrations (local)
+pnpm --filter worker db:migrations:list
+pnpm --filter worker db:migrations:apply
+
+# Database migrations (production)
+pnpm --filter worker db:migrations:list:prod
+pnpm --filter worker db:migrations:apply:prod
 ```
 
 ## 🔧 Development Workflow
@@ -148,6 +157,22 @@ pnpm --filter web dev
 # Terminal 2 - Backend
 pnpm --filter worker dev
 ```
+
+### Database Setup
+
+The backend uses Cloudflare D1 for persistent storage. To set up the local database:
+
+```bash
+cd apps/worker
+
+# Apply migrations to local database
+pnpm db:migrations:apply
+
+# Verify migrations
+pnpm db:migrations:list
+```
+
+For detailed database documentation, see [apps/worker/docs/db.md](apps/worker/docs/db.md)
 
 ### Code Quality
 

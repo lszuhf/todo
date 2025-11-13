@@ -7,7 +7,13 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:migrations:list": "wrangler d1 migrations list todo-db --local",
+    "db:migrations:apply": "wrangler d1 migrations apply todo-db --local",
+    "db:migrations:list:prod": "wrangler d1 migrations list todo-db",
+    "db:migrations:apply:prod": "wrangler d1 migrations apply todo-db",
+    "db:query": "wrangler d1 execute todo-db --local",
+    "db:helper": "./scripts/db-helpers.sh"
   },
   "dependencies": {
     "hono": "^4.3.0",
