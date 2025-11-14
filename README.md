@@ -201,6 +201,48 @@ Deploy the worker to Cloudflare:
 pnpm --filter worker deploy
 ```
 
+## ✨ Features
+
+### Todo Management
+
+The application includes a full-featured todo management system:
+
+- **Create, Edit, and Delete Todos**: Manage your tasks with a clean and intuitive interface
+- **Priority Levels**: Organize todos by priority (low, medium, high)
+- **Tag System**: Assign multiple tags to todos for better organization
+- **Completion Tracking**: Mark todos as complete/incomplete with a checkbox
+- **Filtering**: Filter todos by tags and priority levels
+- **Active Filter Indicators**: Visual badges showing active filters with one-click removal
+
+### Tag Management
+
+Comprehensive tag management features:
+
+- **Create Tags**: Add new tags with unique names
+- **Tag Usage Counts**: See how many todos use each tag
+- **Delete Tags**: Remove tags with confirmation (automatically removed from all todos)
+- **Multi-select in Todo Modal**: Easily add/remove tags when creating or editing todos
+
+### API Endpoints
+
+The backend exposes the following REST API endpoints:
+
+- `GET /api/tags` - List all tags with usage counts
+- `POST /api/tags` - Create a new tag
+- `DELETE /api/tags/:id` - Delete a tag
+- `GET /api/todos` - List todos (supports `?tagIds=1,2&priority=high` filtering)
+- `POST /api/todos` - Create a new todo
+- `PUT /api/todos/:id` - Update a todo
+- `DELETE /api/todos/:id` - Delete a todo
+
+### Configuration
+
+Create a `.env` file in `apps/web/` to configure the API URL:
+
+```env
+VITE_API_URL=http://localhost:8787
+```
+
 ## 🤝 Contributing
 
 1. Create a feature branch
